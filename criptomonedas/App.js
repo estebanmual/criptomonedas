@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Image, View} from 'react-native';
 
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 
 const App = () => {
+  const [moneda, setMoneda] = useState('');
+  const [criptomoneda, setCriptomoneda] = useState('');
+  const [consultarAPI, setConsultarAPI] = useState(false);
   return (
     <>
       <Header />
@@ -13,7 +16,13 @@ const App = () => {
         style={styles.imagen}
       />
       <View style={styles.contenido}>
-        <Formulario />
+        <Formulario
+          moneda={moneda}
+          setMoneda={setMoneda}
+          criptomoneda={criptomoneda}
+          setCriptomoneda={setCriptomoneda}
+          setConsultarAPI={setConsultarAPI}
+        />
       </View>
     </>
   );
