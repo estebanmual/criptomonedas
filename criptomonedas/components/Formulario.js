@@ -22,6 +22,9 @@ const Formulario = () => {
     setMoneda(divisa);
   };
 
+  const obtenerCriptomoneda = cripto => {
+    setCriptomoneda(cripto);
+  };
   return (
     <View>
       <Text style={styles.label}>Moneda</Text>
@@ -35,6 +38,18 @@ const Formulario = () => {
         <Picker.Item label="Libra Esterlina" value="GBP" />
       </Picker>
       <Text style={styles.label}>Criptomoneda</Text>
+      <Picker
+        onValueChange={cripto => obtenerCriptomoneda(cripto)}
+        selectedValue={criptomoneda}>
+        <Picker.Item label="- Seleccione -" value="" />
+        {criptomonedas.map(cripto => (
+          <Picker.Item
+            key={cripto.CoinInfo.Id}
+            label={cripto.CoinInfo.FullName}
+            value={cripto.CoinInfo.Name}
+          />
+        ))}
+      </Picker>
     </View>
   );
 };
